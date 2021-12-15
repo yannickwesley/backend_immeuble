@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const appRoute = require("./routes/routetest")
+const appRoute = require("./routes/routetest");
+const userRoutes = require("./routes/user");
 mongoose.connect('mongodb+srv://wkdev:123Codez@cluster0.hqp5h.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
         useNewUrlParser: true,
         useUnifiedTopology: true
@@ -16,5 +17,6 @@ app.use((req, res, next) => {
     next();
 });
 app.use('/api', appRoute);
+app.use('/api/auth', userRoutes);
 
 module.exports = app;
