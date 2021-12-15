@@ -2,6 +2,10 @@ const express = require('express');
 const mongoose = require('mongoose');
 const appRoute = require("./routes/routetest");
 const userRoutes = require("./routes/user");
+const tenantRoutes = require("./routes/tenant");
+const appartRoutes = require("./routes/appart");
+
+
 mongoose.connect('mongodb+srv://wkdev:123Codez@cluster0.hqp5h.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
         useNewUrlParser: true,
         useUnifiedTopology: true
@@ -16,7 +20,13 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
     next();
 });
-app.use('/api', appRoute);
 app.use('/api/auth', userRoutes);
+app.use('/api', appRoute);
+app.use('/api/tenant', tenantRoutes);
+app.use('/api/appart', appartRoutes);
+
+
+
+
 
 module.exports = app;
